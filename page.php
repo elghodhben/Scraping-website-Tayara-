@@ -15,10 +15,10 @@ if (!$htmlString) {
 //add this line to suppress any warnings
 libxml_use_internal_errors(true);
 
-// Créer un fichier CSV
+// create an file CSV
 $csvFile = fopen('products.csv', 'w');
 
-// En-têtes du fichier CSV
+// Header of file CSV
 fputcsv($csvFile, array('Product Name', 'Desciptions', 'price', 'Url OF Image'));
 
 $doc = new DOMDocument();
@@ -37,7 +37,7 @@ foreach ($titles as $key => $title) {
     fputcsv($csvFile, array($title->textContent, $descriptions[$key]->textContent, $prices[$key]->textContent, $imageUrls[$key]->nodeValue));
 }
 
-// Fermer le fichier CSV
+// close the file
 fclose($csvFile);
 
 echo 'Les informations ont été récupérées et enregistrées dans products.csv';
