@@ -1,43 +1,51 @@
 <?php
-# scraping books to scrape: https://books.toscrape.com/
 require './vendor/autoload.php';
 
 $httpClient = new \GuzzleHttp\Client();
+$baseUrl = 'https://pharma-shop.tn/841-hydratants-toutes-peaux?fbclid=IwAR1YsPvKs5krEeV64TRmMafp-b_1cqPOPqEXBzZl1ARt8u0cDQkuLy7FL8Q&page=';
 
-$response = $httpClient->get('https://pharma-shop.tn/841-hydratants-toutes-peaux?fbclid=IwAR1YsPvKs5krEeV64TRmMafp-b_1cqPOPqEXBzZl1ARt8u0cDQkuLy7FL8Q');
-$htmlString = (string) $response->getBody();
-
-// Check if HTML content is successfully retrieved
-if (!$htmlString) {
-    die('Failed to retrieve HTML content from the URL.');
-}
-
-//add this line to suppress any warnings
-libxml_use_internal_errors(true);
-
-// create an file CSV
+// create a file CSV
 $csvFile = fopen('products.csv', 'w');
 
 // Header of file CSV
-fputcsv($csvFile, array('Product Name', 'Desciptions', 'price', 'Url OF Image'));
+fputcsv($csvFile, array('Product Name', 'Descriptions', 'Price', 'URL of Image'));
 
-$doc = new DOMDocument();
-$doc->loadHTML($htmlString);
+for ($page = 1; ; $page++) {
+    $url = $baseUrl . $page;
 
-$xpath = new DOMXPath($doc);
+    $response = $httpClient->get($url);
+    $htmlString = (string) $response->getBody();
 
-$imageUrls = $xpath->evaluate('//div[@class="product-image"]//a//img/@data-full-size-image-url');
-$titles = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//h2/a');
-$descriptions = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//h2/a');
-$prices = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//div[@class="product-price-and-shipping"]//span[@class="price"]');
+    // Check if HTML content is successfully retrieved
+    if (!$htmlString) {
+        break; // Stop if failed to retrieve HTML content
+    }
 
-foreach ($titles as $key => $title) {
-    // echo $title->textContent . ' @ ' . $prices[$key]->textContent . PHP_EOL;
+    libxml_use_internal_errors(true);
 
-    fputcsv($csvFile, array($title->textContent, $descriptions[$key]->textContent, $prices[$key]->textContent, $imageUrls[$key]->nodeValue));
+    $doc = new DOMDocument();
+    $doc->loadHTML($htmlString);
+
+    $xpath = new DOMXPath($doc);
+
+    $imageUrls = $xpath->evaluate('//div[@class="product-image"]//a//img/@data-full-size-image-url');
+    $titles = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//h2/a');
+    $descriptions = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//h2/a');
+    $prices = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//div[@class="product-price-and-shipping"]//span[@class="price"]');
+
+    foreach ($titles as $key => $title) {
+        fputcsv($csvFile, array($title->textContent, $descriptions[$key]->textContent, $prices[$key]->textContent, $imageUrls[$key]->nodeValue));
+    }
+
+    // If there is no "next" link, break the loop
+    $nextLink = $xpath->evaluate('//nav[@class="pagination"]//div[@class="row"]//ul[@class="page-list clearfix text-sm-right"]//li/a/@href');
+    if (!$nextLink || !$nextLink->item(0)) {
+        break;
+    }
 }
 
-// close the file
+// Close the file
 fclose($csvFile);
 
 echo 'Les informations ont été récupérées et enregistrées dans products.csv';
+?>
