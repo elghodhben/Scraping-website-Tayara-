@@ -1,41 +1,25 @@
-"Nom du produit",Prix,"Lien du produit","Lien de l'image"
-"A Light in the ...","£51.77
-"
-"Tipping the Velvet","£53.74
-"
-Soumission,"£50.10
-"
-"Sharp Objects","£47.82
-"
-"Sapiens: A Brief History ...","£54.23
-"
-"The Requiem Red","£22.65
-"
-"The Dirty Little Secrets ...","£33.34
-"
-"The Coming Woman: A ...","£17.93
-"
-"The Boys in the ...","£22.60
-"
-"The Black Maria","£52.15
-"
-"Starving Hearts (Triangular Trade ...","£13.99
-"
-"Shakespeare's Sonnets","£20.66
-"
-"Set Me Free","£17.46
-"
-"Scott Pilgrim's Precious Little ...","£52.29
-"
-"Rip it Up and ...","£35.02
-"
-"Our Band Could Be ...","£57.25
-"
-Olio,"£23.88
-"
-"Mesaerion: The Best Science ...","£37.59
-"
-"Libertarianism for Beginners","£51.33
-"
-"It's Only the Himalayas","£45.17
-"
+"Product Name",Desciptions,price,"Url OF Image"
+"LIRENE C+D PRO VITAMIN ENERGY GEL-CREME PEAUX...","LIRENE C+D PRO VITAMIN ENERGY GEL-CREME PEAUX...","43,451 TND",https://pharma-shop.tn/10952-large_default/lirene-cd-pro-vitamin-energy-gel-creme-peaux-normales-à-mixtes-50ml.jpg
+"AVENE HYDRANCE AQUA GEL-CREME HYDRATANT 50ML","AVENE HYDRANCE AQUA GEL-CREME HYDRATANT 50ML","43,456 TND",https://pharma-shop.tn/7928-large_default/avene-hydrance-aqua-gel-creme-hydratant-50ml.jpg
+"SVR AMPOULE HYDRA B 30ML PEAUX SENSIBLES 30ML","SVR AMPOULE HYDRA B 30ML PEAUX SENSIBLES 30ML","98,449 TND",https://pharma-shop.tn/6999-large_default/svr-hydra-b-30ml-peaux-sensibles.jpg
+"SVR HYDRALIANE CREME TOUS TYPES DE PEAUX...","SVR HYDRALIANE CREME TOUS TYPES DE PEAUX...","36,600 TND",https://pharma-shop.tn/20864-large_default/svr-hydraliane-creme-tous-types-de-peaux-sensibles-50ml.jpg
+"MARTIDERM PLATINUM NIGHT RENEW 10 AMPOULES","MARTIDERM PLATINUM NIGHT RENEW 10 AMPOULES","96,302 TND",https://pharma-shop.tn/5908-large_default/martiderm-platinum-night-renew-10-ampoules.jpg
+"JONZAC REHYDRATE SERUM CONCENTRE DESALTERANT 30ML","JONZAC REHYDRATE SERUM CONCENTRE DESALTERANT 30ML","63,104 TND",https://pharma-shop.tn/13566-large_default/jonzac-rehydrate-serum-concentre-desalterant-30ml.jpg
+"SVR TROUSSE AMPOULE [B]+AMPOULE [C]+AMPOULE...","SVR TROUSSE AMPOULE [B]+AMPOULE [C]+AMPOULE...","209,922 TND",https://pharma-shop.tn/21418-large_default/svr-trousse-ampoule-b-ampoule-c-ampoule-refresh-15ml-offert.jpg
+"ALANIA PURETE+ VITAMINE C SERUM DUO JOUR ET NUIT","ALANIA PURETE+ VITAMINE C SERUM DUO JOUR ET NUIT","70,991 TND",https://pharma-shop.tn/10668-large_default/alania-purete-vitamine-c-serum-duo-jour-et-nuit.jpg
+"SVR TROUSSE AMPOULE [B]+AMPOULE [C]+AMPOULE...","SVR TROUSSE AMPOULE [B]+AMPOULE [C]+AMPOULE...","209,922 TND",https://pharma-shop.tn/21416-large_default/svr-trousse-ampoule-b-ampoule-c-ampoule-relax-offert.jpg
+"BYPHASSE CREME HYDRATANTE&NOURRISSANTE 250ML","BYPHASSE CREME HYDRATANTE&NOURRISSANTE 250ML","19,800 TND",https://pharma-shop.tn/13943-large_default/byphasse-creme-hydratantenourrissante-250ml.jpg
+"URIAGE EAU THERMALE SOIN D'EAU EMBELLISSEUR 40ML","URIAGE EAU THERMALE SOIN D'EAU EMBELLISSEUR 40ML","31,199 TND",https://pharma-shop.tn/6618-large_default/uriage-eau-thermale-soin-d-eau-embellisseur-40ml.jpg
+"PHYTEAL ARGASKIN HUILE D'ARGAN 40ML","PHYTEAL ARGASKIN HUILE D'ARGAN 40ML","39,662 TND",https://pharma-shop.tn/5332-large_default/phyteal-argaskin-huile-d-argan-40ml.jpg
+"JONZAC REHYDRATE MASQUE RESSOURCANT 50ML","JONZAC REHYDRATE MASQUE RESSOURCANT 50ML","43,164 TND",https://pharma-shop.tn/13567-large_default/jonzac-rehydrate-masque-ressourcant-50ml.jpg
+"SVR [B3] ESSENCE HYDRA 150ML","SVR [B3] ESSENCE HYDRA 150ML","58,234 TND",https://pharma-shop.tn/9448-large_default/svr-b3-essence-hydra-150-ml.jpg
+"CLARENIA HB5 SERUM HYDRA REPULPANT 30ML","CLARENIA HB5 SERUM HYDRA REPULPANT 30ML","79,842 TND",https://pharma-shop.tn/18875-large_default/clarenia-hb5-serum-hydra-repulpant-30ml.jpg
+"APOTHICA GELÉE HYDRATANTE À L'ALOE VERA...","APOTHICA GELÉE HYDRATANTE À L'ALOE VERA...","25,704 TND",https://pharma-shop.tn/15104-large_default/apothica-gelée-hydratante-à-l-aloe-vera-corps-cheveux-aprés-bronzage-200ml.jpg
+"LA ROCHE POSAY HYALU B5 SPF30 AQUAGEL 50ml","LA ROCHE POSAY HYALU B5 SPF30 AQUAGEL 50ml","127,806 TND",https://pharma-shop.tn/14743-large_default/la-roche-posay-hyalu-b5-spf30-aquagel-50ml.jpg
+"SESDERMA LA ROUTINE PARFAITE","SESDERMA LA ROUTINE PARFAITE","221,340 TND",https://pharma-shop.tn/19237-large_default/bp-sesderma-la-routine-parfaite.jpg
+"KUORA GEL HYDRATANT AUX BIOMEMBRANES ET A...","KUORA GEL HYDRATANT AUX BIOMEMBRANES ET A...","91,445 TND",https://pharma-shop.tn/18179-large_default/kuora-hel-hydratant-aux-biomembranes-et-a-l-acide-glycolique-spf10-50ml.jpg
+"APOTHICA CREME HYDRATANTE CLARIFIANTE 50ML","APOTHICA CREME HYDRATANTE CLARIFIANTE 50ML","33,048 TND",https://pharma-shop.tn/15102-large_default/apothica-crème-hydratante-clarifiante-50ml.jpg
+"URIAGE EAU THERMALE SÉRUM D'EAU 30ML","URIAGE EAU THERMALE SÉRUM D'EAU 30ML","44,444 TND",https://pharma-shop.tn/3446-large_default/uriage-eau-thermale-sérum-d-eau-30ml.jpg
+"STRIDERMA STRI HYDRA CREME 50ML","STRIDERMA STRI HYDRA CREME 50ML","21,848 TND",https://pharma-shop.tn/21597-large_default/striderma-stri-hydra-creme-50ml.jpg
+"DERMEDIC HYDRAIN 3 SERUM 30ML","DERMEDIC HYDRAIN 3 SERUM 30ML","87,108 TND",https://pharma-shop.tn/5061-large_default/dermedic-hydrain-3-serum-30-ml.jpg
+"LUCIOLE SKIN CARE CREME RADIANCE BOOSTER 50ML","LUCIOLE SKIN CARE CREME RADIANCE BOOSTER 50ML","50,000 TND",https://pharma-shop.tn/20608-large_default/luciole-skin-care-creme-radiance-booster-50ml.jpg
