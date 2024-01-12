@@ -29,7 +29,7 @@ for ($page = 1; ; $page++) {
     $xpath = new DOMXPath($doc);
 
     $imageUrls = $xpath->evaluate('//div[@class="product-image"]//a//img/@data-full-size-image-url');
-    $titles = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//h2/a');
+    $titles = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//div[@class="text-center txt-marque"]/a');
     $descriptions = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//h2/a');
     $prices = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//div[@class="product-price-and-shipping"]//span[@class="price"]');
 
