@@ -1,20 +1,45 @@
 <?php
 require './vendor/autoload.php';
 
-$httpClient = new \GuzzleHttp\Client();
-$baseUrl = 'https://pharma-shop.tn/841-hydratants-toutes-peaux?fbclid=IwAR1YsPvKs5krEeV64TRmMafp-b_1cqPOPqEXBzZl1ARt8u0cDQkuLy7FL8Q&page=';
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
-// create a file CSV
-$csvFile = fopen('products.csv', 'w');
+// Function to fetch data for a specific page
+function fetchDataForPage($page) {
+    $httpClient = new Client();
+    $baseUrl = 'https://www.tayara.tn/search/?page=';
+
+    try {
+        $response = $httpClient->get($baseUrl . $page);
+        return (string) $response->getBody();
+    } catch (RequestException $e) {
+        echo 'Error fetching URL: ' . $e->getMessage();
+        return false;
+    }
+}
+
+// Set initial file name
+$fileName = 'tayara.csv';
+
+// Check if the file already exists, if so, increment the file name
+$i = 1;
+while (file_exists($fileName)) {
+    $fileName = 'tayara_' . $i . '.csv';
+    $i++;
+}
+
+// Create the CSV file
+$csvFile = fopen($fileName, 'w');
 
 // Header of file CSV
-fputcsv($csvFile, array('Product Name', 'Descriptions', 'Price', 'URL of Image'));
+fputcsv($csvFile, array('Category', 'Description', 'Price', 'Location', 'Image URL'));
 
-for ($page = 1; ; $page++) {
-    $url = $baseUrl . $page;
+// Starting page
+$page = 1;
 
-    $response = $httpClient->get($url);
-    $htmlString = (string) $response->getBody();
+do {
+    // Fetch data for the current page
+    $htmlString = fetchDataForPage($page);
 
     // Check if HTML content is successfully retrieved
     if (!$htmlString) {
@@ -28,24 +53,49 @@ for ($page = 1; ; $page++) {
 
     $xpath = new DOMXPath($doc);
 
-    $imageUrls = $xpath->evaluate('//div[@class="product-image"]//a//img/@data-full-size-image-url');
-    $titles = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//div[@class="text-center txt-marque"]/a');
-    $descriptions = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//h2/a');
-    $prices = $xpath->evaluate('//div[@class="product-meta"]//div[@class="product-description"]//div[@class="product-price-and-shipping"]//span[@class="price"]');
+    $articles = $xpath->query('//article[@class="mx-0"]');
 
-    foreach ($titles as $key => $title) {
-        fputcsv($csvFile, array($title->textContent, $descriptions[$key]->textContent, $prices[$key]->textContent, $imageUrls[$key]->nodeValue));
-    }
-
-    // If there is no "next" link, break the loop
-    $nextLink = $xpath->evaluate('//nav[@class="pagination"]//div[@class="row"]//ul[@class="page-list clearfix text-sm-right"]//li/a/@href');
-    if (!$nextLink || !$nextLink->item(0)) {
+    if ($articles->length === 0) {
+        // No more articles found, stop looping
         break;
     }
-}
+
+    foreach ($articles as $article) {
+        
+        $title = $description = $price = $imageUrl = $category = $location = null;
+
+        $titleNode = $xpath->query('.//h2', $article)->item(0);
+        $priceNode = $xpath->query('.//data', $article)->item(0);
+        $imageNode = $xpath->query('.//img/@src', $article)->item(0);
+        $categoryNode = $xpath->query('.//span[contains(@class, "text-neutral-500")]', $article)->item(0);
+        $locationNode = $xpath->query('.//div[contains(@class, "text-gray-800")]', $article)->item(1);
+
+        if ($titleNode) {
+            $title = $titleNode->textContent;
+        }
+        if ($priceNode) {
+            $price = $priceNode->getAttribute('value');
+        }
+        if ($imageNode) {
+            $imageUrl = $imageNode->nodeValue;
+        }
+        if ($categoryNode) {
+            $category = $categoryNode->textContent;
+        }
+        if ($locationNode) {
+            $location = $locationNode->textContent;
+        }
+
+        fputcsv($csvFile, array($category, $title,  $price.' TND' , $location, $imageUrl));
+    }
+
+    // Move to the next page
+    $page++;
+
+} while (true); // Continue looping indefinitely
 
 // Close the file
 fclose($csvFile);
 
-echo 'Les informations ont été récupérées et enregistrées dans products.csv';
+echo 'The information has been retrieved and saved in ' . $fileName . '!';
 ?>
